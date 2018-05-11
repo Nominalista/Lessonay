@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    private let automaton = Automaton(state: State(), transducer: AppTransducer())
+    private let navigator = ApplicationNavigator()
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -24,7 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupWindow() {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
-        window.rootViewController = HomeViewController(automaton: automaton)
         self.window = window
+
+        navigator.configure(window: window)
     }
 }

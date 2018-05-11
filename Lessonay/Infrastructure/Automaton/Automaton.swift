@@ -7,26 +7,26 @@
 import RxCocoa
 import RxSwift
 
-class Automaton<T: Transducer> {
+class Automaton<State> {
 
-    typealias State = T.State
-    typealias Input = T.Input
+    typealias Mapping = (State, Input) -> (State, Observable<Input>?)
 
     let state: BehaviorRelay<State>
 
-    var replies: Observable<Reply<State, Input>> {
+    var replies: Observable<Reply<State>> {
         return replySubject.asObservable()
     }
 
-    private var transducer: T
+    private var mapping: Mapping
+
     // Subject is two-sided pipe for emitting and observing.
     private let inputSubject = PublishSubject<Input>()
-    private let replySubject = PublishSubject<Reply<State, Input>>()
+    private let replySubject = PublishSubject<Reply<State>>()
     private let disposeBag = DisposeBag()
 
-    init(state initialState: State, transducer: T) {
-        self.state = BehaviorRelay(value: initialState)
-        self.transducer = transducer
+    init(state: State, mapping: @escaping Mapping) {
+        self.state = BehaviorRelay(value: state)
+        self.mapping = mapping
         observeInputs()
     }
 
@@ -35,73 +35,50 @@ class Automaton<T: Transducer> {
         self.replySubject.onCompleted()
     }
 
-    // Observes `inputObservable` and binds it to state and replies.
     private func observeInputs() {
-        // Maps every input sent from `inputs` to `Reply`.
-        let replyObservable = recur(inputObservable: inputSubject)
-                .map { [unowned self] input -> Reply<State, Input> in
-                    let fromState = self.state.value
-                    if let (toState, _) = self.transducer.map(state: fromState, input: input) {
-                        return .success(input, fromState, toState)
-                    } else {
-                        return .failure(input, fromState)
-                    }
-                }
-                // Shares events for two observers.
+        let recurredReplyObservable = recurReply(from: inputSubject)
                 .share(replay: 1, scope: .forever)
 
-        // Changes state after every successful reply.
-        replyObservable
-                .flatMap { reply -> Observable<State> in
-                    if let toState = reply.toState {
-                        return .just(toState)
-                    } else {
-                        return .empty()
-                    }
-                }
+        // Changes state after every reply.
+        recurredReplyObservable
+                .map { $0.toState }
                 .bind(to: state)
                 .disposed(by: disposeBag)
 
-        // Assigns `replyObservable` to a property.
-        replyObservable
+        // Transmits replies into other observable.
+        recurredReplyObservable
                 .subscribe(replySubject)
                 .disposed(by: disposeBag)
     }
 
-    // Recurs `inputObservable` for emitting inputs and additional outputs from `transducer`.
-    private func recur(inputObservable: Observable<Input>) -> Observable<Input> {
-        return Observable.create { [unowned self] observer in
-            // Emits input, from state and output.
-            let mappedObservable = inputObservable
-                    .map { input -> (Input, State, Observable<Input>?) in
-                        let fromState = self.state.value
-                        if let (_, outputObservable) = self.transducer.map(state: fromState, input: input) {
-                            return (input, fromState, outputObservable)
-                        } else {
-                            return (input, fromState, nil)
-                        }
-                    }
-                    // Shares events for two observers.
-                    .share(replay: 1, scope: .forever)
+    // Recurs `inputObservable` to emit inputs and outputs produced from `mapping`.
+    private func recurReply(from inputObservable: Observable<Input>) -> Observable<Reply<State>> {
+        let replyObservable = inputObservable
+                .map { [unowned self] input -> Reply<State> in
+                    let fromState = self.state.value
+                    let (toState, output) = self.mapping(fromState, input)
+                    return Reply(input: input, fromState: fromState, toState: toState, output: output)
+                }
+                // Shares events for two observers.
+                .share(replay: 1, scope: .forever)
 
-            // Emits input if `transducer` emitted output and uses this output for recursion.
-            let successObservable = mappedObservable
-                    .filter { _, _, outputObservable in outputObservable != nil }
-                    // After switching to another `Observable` it unsubscribes from old,
-                    // while `flatMap` would be still emitting.
-                    .flatMapLatest { input, fromState, outputObservable -> Observable<Input> in
-                        return self.recur(inputObservable: outputObservable!)
-                                .startWith(input)
-                    }
-            // Emits input if `transducer didn't emit output.
-            let failureObservable = mappedObservable
-                    .filter { _, _, outputObservable in outputObservable == nil }
-                    .map { input, fromState, _ in input }
+        // Recurs successfully mapped replies.
+        let successObservable = replyObservable
+                .filter { $0.output != nil }
+                // After switching to another `Observable` it unsubscribes from old,
+                // while `flatMap` would be still emitting.
+                .flatMapLatest { [unowned self] reply -> Observable<Reply<State>> in
+                    let output = reply.output!
+                    return self.recurReply(from: output)
+                            .startWith(reply)
+                }
 
-            // `successObservable` and `failureObservable` both emit `Input`.
-            let mergedObservable = Observable.of(successObservable, failureObservable).merge()
-            return mergedObservable.subscribe(observer)
-        }
+        // Emits replies without output.
+        let failureObservable = replyObservable
+                .filter { $0.output == nil }
+
+        // `successObservable` and `failureObservable` both emit `Reply<State>`.
+        return Observable.merge(successObservable, failureObservable)
     }
 
     func send(input: Input) {

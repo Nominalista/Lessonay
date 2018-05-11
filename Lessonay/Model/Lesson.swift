@@ -9,3 +9,10 @@ struct Lesson {
 
     let videoURL: URL
 }
+
+extension Lesson: Equatable {
+
+    static func ==(lhs: Lesson, rhs: Lesson) -> Bool {
+        return lhs.videoURL == rhs.videoURL
+    }
+}

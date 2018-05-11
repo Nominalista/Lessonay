@@ -1,16 +1,24 @@
 PODS:
+  - DesignExtensions (0.1.1)
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
+  - VideoPlayer (0.2.1):
+    - RxCocoa (~> 4.1.2)
+    - RxSwift (~> 4.1.2)
 
 DEPENDENCIES:
+  - DesignExtensions
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
+  - VideoPlayer
 
 SPEC CHECKSUMS:
+  DesignExtensions: 64c52baf77ff2bb9e487377e346c810f9ff4b11f
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
+  VideoPlayer: 531147addc97607b7d139fbc0e3426064672d4a8
 
-PODFILE CHECKSUM: e1b2577d9bbbf47e10ebf26d8d012ac724a5c660
+PODFILE CHECKSUM: b7c90829d4113f9055751553bcd9497a9abcab4e
 
 COCOAPODS: 1.4.0

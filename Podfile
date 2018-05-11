@@ -6,8 +6,10 @@ target 'Lessonay' do
   use_frameworks!
 
   # Pods for Lessonay
+  pod 'DesignExtensions'
   pod 'RxSwift',    '~> 4.0'
   pod 'RxCocoa',    '~> 4.0'
+  pod 'VideoPlayer'
 
 end
 
