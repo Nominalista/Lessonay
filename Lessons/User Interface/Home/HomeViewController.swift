@@ -40,6 +40,7 @@ class HomeViewController: UIViewController {
         label.textColor = .primary
         label.font = .subhead
         label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
 
