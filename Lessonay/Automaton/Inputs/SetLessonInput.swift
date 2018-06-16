@@ -3,7 +3,7 @@
 // Copyright (c) 2018 Nominalista. All rights reserved.
 //
 
-struct SetLessonInput: Input {
+struct SetLessonInput: ApplicationInput {
 
     let lesson: Lesson?
 }

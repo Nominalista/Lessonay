@@ -71,10 +71,10 @@ class HomeViewController: UIViewController {
     }()
 
     private let navigator: ApplicationNavigator
-    private let automaton: Automaton<ApplicationState>
+    private let automaton: ApplicationAutomaton
     private let disposeBag = DisposeBag()
 
-    init(navigator: ApplicationNavigator, automaton: Automaton<ApplicationState>) {
+    init(navigator: ApplicationNavigator, automaton: ApplicationAutomaton) {
         self.navigator = navigator
         self.automaton = automaton
         super.init(nibName: nil, bundle: nil)

@@ -9,7 +9,7 @@ struct HomeMapper {
 
     private let lessonService = LessonService()
 
-    func map(state: HomeState, input: Input) -> (HomeState, Observable<Input>?) {
+    func map(state: HomeState, input: ApplicationInput) -> (HomeState, Observable<ApplicationInput>?) {
         switch input {
         case let input as UpdateLessonStateInput:
             return map(state: state, input: input)
@@ -18,8 +18,8 @@ struct HomeMapper {
         }
     }
 
-    private func map(state: HomeState, input: UpdateLessonStateInput) -> (HomeState, Observable<Input>?) {
-        var output: Observable<Input>?
+    private func map(state: HomeState, input: UpdateLessonStateInput) -> (HomeState, Observable<ApplicationInput>?) {
+        var output: Observable<ApplicationInput>?
 
         switch input.lessonState {
         case .loading:
@@ -31,7 +31,7 @@ struct HomeMapper {
         return (HomeState(lessonState: input.lessonState), output)
     }
 
-    private func retrieveLesson() -> Observable<Input> {
+    private func retrieveLesson() -> Observable<ApplicationInput> {
         return lessonService.retrieveLesson()
                 .map { UpdateLessonStateInput(lessonState: .lesson($0)) }
     }

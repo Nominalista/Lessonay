@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93273172F667667AAEE1E388 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273E2A755642C0FC6AFE75 /* Input.swift */; };
+		932731AAC5EFAF8F7F79AF30 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932739FF8EF6DC612F477050 /* Utils.swift */; };
 		93273208D397904F6DA7A3FB /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273531DC048EBC1CF35627 /* HomeState.swift */; };
 		932732FBA33B3B3E8B362ACF /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273E2516242A2A14683EB3 /* CGFloat.swift */; };
 		93273301FF2580AF6CB6596E /* ApplicationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273736C5B018754094C3E1 /* ApplicationState.swift */; };
@@ -24,9 +24,11 @@
 		932738B758ACE381AF07437E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273A84BCB6650BBF685C70 /* AppDelegate.swift */; };
 		9327393B2C1DC5C82CE2E012 /* HomeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932739D86BABD182047C4093 /* HomeMapper.swift */; };
 		932739FCB0ED7F7FEB93D221 /* ApplicationMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273EC6BA56CCC346234EB5 /* ApplicationMapper.swift */; };
+		932739FFBA40A5832DC9773C /* ApplicationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932739F3E5ED4DCF522F089E /* ApplicationInput.swift */; };
 		93273A8025708EC41EE2BE04 /* SetIsPlayingInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273198937BBB7A62ADA580 /* SetIsPlayingInput.swift */; };
 		93273B3D5946206A91D28678 /* PlaybackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273065606EFB5BF7AC367E /* PlaybackState.swift */; };
 		93273B5C5DF97EA1C45B4903 /* UpdateLessonStateInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273730D918E14DA2209B07 /* UpdateLessonStateInput.swift */; };
+		93273B696626653ED757C62F /* ApplicationAutomaton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273EBEBDAF566AB6C832BC /* ApplicationAutomaton.swift */; };
 		93273BABACE49F1DB69856C4 /* ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932737420738FD66B5423B35 /* ObservableType.swift */; };
 		93273BEAEC9323140B0F7C70 /* SetLessonInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273EAB32E8976A5BBA76B2 /* SetLessonInput.swift */; };
 		93273BF2D11127541A74CC51 /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273DE22C7D3CCADDBC84B4 /* Reply.swift */; };
@@ -60,16 +62,18 @@
 		932737420738FD66B5423B35 /* ObservableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableType.swift; sourceTree = "<group>"; };
 		932737AF11C421B2DCA343B0 /* Lessonay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lessonay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		932739D86BABD182047C4093 /* HomeMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMapper.swift; sourceTree = "<group>"; };
+		932739F3E5ED4DCF522F089E /* ApplicationInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInput.swift; sourceTree = "<group>"; };
+		932739FF8EF6DC612F477050 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		93273A84BCB6650BBF685C70 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93273A84DBFA567B2212BD10 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		93273D77D6865E68E7AC7BC2 /* Automaton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Automaton.swift; sourceTree = "<group>"; };
 		93273D94B89005DE833FA691 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93273DE22C7D3CCADDBC84B4 /* Reply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
 		93273E2516242A2A14683EB3 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
-		93273E2A755642C0FC6AFE75 /* Input.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		93273E31C1D21C6EE546FB7B /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		93273E8931BBF32B23340EC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		93273EAB32E8976A5BBA76B2 /* SetLessonInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetLessonInput.swift; sourceTree = "<group>"; };
+		93273EBEBDAF566AB6C832BC /* ApplicationAutomaton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationAutomaton.swift; sourceTree = "<group>"; };
 		93273EC6BA56CCC346234EB5 /* ApplicationMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationMapper.swift; sourceTree = "<group>"; };
 		93273EE60ED50398C45B603E /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		DA501E27209F4E0C00C03727 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -278,7 +282,7 @@
 			children = (
 				93273D77D6865E68E7AC7BC2 /* Automaton.swift */,
 				93273DE22C7D3CCADDBC84B4 /* Reply.swift */,
-				93273E2A755642C0FC6AFE75 /* Input.swift */,
+				932739FF8EF6DC612F477050 /* Utils.swift */,
 			);
 			path = Automaton;
 			sourceTree = "<group>";
@@ -289,6 +293,7 @@
 				93273730D918E14DA2209B07 /* UpdateLessonStateInput.swift */,
 				93273EAB32E8976A5BBA76B2 /* SetLessonInput.swift */,
 				93273198937BBB7A62ADA580 /* SetIsPlayingInput.swift */,
+				932739F3E5ED4DCF522F089E /* ApplicationInput.swift */,
 			);
 			path = Inputs;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 				93273091F854A66A86FD9135 /* Mappers */,
 				93273F2A0B09DF34CB97430C /* Inputs */,
 				93273D879B522484351FE952 /* Navigators */,
+				93273EBEBDAF566AB6C832BC /* ApplicationAutomaton.swift */,
 			);
 			path = Automaton;
 			sourceTree = "<group>";
@@ -454,13 +460,15 @@
 				93273E28089EDFB59DDC0EC5 /* PlaybackMapper.swift in Sources */,
 				93273BF5D262B072B3D16D8B /* ApplicationNavigator.swift in Sources */,
 				93273BABACE49F1DB69856C4 /* ObservableType.swift in Sources */,
-				93273172F667667AAEE1E388 /* Input.swift in Sources */,
 				932738788800B6C517F93922 /* HomeViewController.swift in Sources */,
 				93273564D2C8AF914E501778 /* PlaybackViewController.swift in Sources */,
 				93273CC6A304A2D4EC77EF84 /* VideoView.swift in Sources */,
 				93273B5C5DF97EA1C45B4903 /* UpdateLessonStateInput.swift in Sources */,
 				93273BEAEC9323140B0F7C70 /* SetLessonInput.swift in Sources */,
 				93273A8025708EC41EE2BE04 /* SetIsPlayingInput.swift in Sources */,
+				932739FFBA40A5832DC9773C /* ApplicationInput.swift in Sources */,
+				93273B696626653ED757C62F /* ApplicationAutomaton.swift in Sources */,
+				932731AAC5EFAF8F7F79AF30 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

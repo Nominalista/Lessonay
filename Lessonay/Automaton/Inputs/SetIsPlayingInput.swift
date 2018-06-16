@@ -3,7 +3,7 @@
 // Copyright (c) 2018 Nominalista. All rights reserved.
 //
 
-struct SetIsPlayingInput: Input {
+struct SetIsPlayingInput: ApplicationInput {
 
     let isPlaying: Bool
 }

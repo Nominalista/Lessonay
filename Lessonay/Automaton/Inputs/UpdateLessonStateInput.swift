@@ -3,7 +3,7 @@
 // Copyright (c) 2018 Nominalista. All rights reserved.
 //
 
-struct UpdateLessonStateInput: Input {
+struct UpdateLessonStateInput: ApplicationInput {
 
     let lessonState: LessonState
 }

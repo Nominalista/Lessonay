@@ -34,13 +34,13 @@ class PlaybackViewController: UIViewController {
     }()
 
     private let navigator: ApplicationNavigator
-    private let automaton: Automaton<ApplicationState>
+    private let automaton: ApplicationAutomaton
     private let videoPlaybackManager: VideoPlaybackManager
     private let disposeBag = DisposeBag()
     private var videoPlayerDisposeBag: DisposeBag?
 
     init(navigator: ApplicationNavigator,
-         automaton: Automaton<ApplicationState>,
+         automaton: ApplicationAutomaton,
          videoPlaybackManager: VideoPlaybackManager) {
         self.navigator = navigator
         self.automaton = automaton

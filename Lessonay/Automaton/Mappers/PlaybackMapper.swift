@@ -7,7 +7,7 @@ import RxSwift
 
 struct PlaybackMapper {
 
-    func map(state: PlaybackState, input: Input) -> (PlaybackState, Observable<Input>?) {
+    func map(state: PlaybackState, input: ApplicationInput) -> (PlaybackState, Observable<ApplicationInput>?) {
         switch input {
         case let input as SetIsPlayingInput:
             return map(state: state, input: input)
@@ -18,12 +18,12 @@ struct PlaybackMapper {
         }
     }
 
-    private func map(state: PlaybackState, input: SetIsPlayingInput) -> (PlaybackState, Observable<Input>?) {
+    private func map(state: PlaybackState, input: SetIsPlayingInput) -> (PlaybackState, Observable<ApplicationInput>?) {
         let newState = PlaybackState(isPlaying: input.isPlaying, lesson: state.lesson)
         return (newState, .empty())
     }
 
-    private func map(state: PlaybackState, input: SetLessonInput) -> (PlaybackState, Observable<Input>?) {
+    private func map(state: PlaybackState, input: SetLessonInput) -> (PlaybackState, Observable<ApplicationInput>?) {
         let newState = PlaybackState(isPlaying: state.isPlaying, lesson: input.lesson)
         return (newState, .empty())
     }

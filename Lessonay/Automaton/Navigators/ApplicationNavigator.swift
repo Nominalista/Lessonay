@@ -8,14 +8,14 @@ import VideoPlayer
 
 class ApplicationNavigator {
 
-    private let automaton: Automaton<ApplicationState>
+    private let automaton: ApplicationAutomaton
 
     private lazy var homeViewController = HomeViewController(navigator: self, automaton: automaton)
 
     init() {
         let state = ApplicationState()
         let mapper = ApplicationMapper()
-        self.automaton = Automaton(state: state, mapping: mapper.map)
+        self.automaton = ApplicationAutomaton(state: state, mapping: mapper.map)
     }
 
     func configure(window: UIWindow) {

@@ -7,54 +7,33 @@
 import RxCocoa
 import RxSwift
 
-class Automaton<State> {
+class Automaton<State, Input> {
 
     typealias Mapping = (State, Input) -> (State, Observable<Input>?)
 
     let state: BehaviorRelay<State>
-
-    var replies: Observable<Reply<State>> {
-        return replySubject.asObservable()
-    }
+    var replies: Observable<Reply<State, Input>> { return replySubject.asObservable() }
 
     private var mapping: Mapping
 
-    // Subject is two-sided pipe for emitting and observing.
+    private let replySubject = PublishSubject<Reply<State, Input>>()
     private let inputSubject = PublishSubject<Input>()
-    private let replySubject = PublishSubject<Reply<State>>()
-    private let disposeBag = DisposeBag()
+    private var disposable: Disposable?
 
     init(state: State, mapping: @escaping Mapping) {
         self.state = BehaviorRelay(value: state)
         self.mapping = mapping
-        observeInputs()
-    }
-
-    deinit {
-        // Stops emission of replies.
-        self.replySubject.onCompleted()
-    }
-
-    private func observeInputs() {
-        let recurredReplyObservable = recurReply(from: inputSubject)
-                .share(replay: 1, scope: .forever)
-
-        // Changes state after every reply.
-        recurredReplyObservable
-                .map { $0.toState }
-                .bind(to: state)
-                .disposed(by: disposeBag)
-
-        // Transmits replies into other observable.
-        recurredReplyObservable
-                .subscribe(replySubject)
-                .disposed(by: disposeBag)
+        // Starts observing input
+        self.disposable = recurReply(from: inputSubject).subscribe(onNext: { [unowned self] reply in
+            self.state.accept(reply.toState)
+            self.replySubject.onNext(reply)
+        })
     }
 
     // Recurs `inputObservable` to emit inputs and outputs produced from `mapping`.
-    private func recurReply(from inputObservable: Observable<Input>) -> Observable<Reply<State>> {
+    private func recurReply(from inputObservable: Observable<Input>) -> Observable<Reply<State, Input>> {
         let replyObservable = inputObservable
-                .map { [unowned self] input -> Reply<State> in
+                .map { [unowned self] input -> Reply<State, Input> in
                     let fromState = self.state.value
                     let (toState, output) = self.mapping(fromState, input)
                     return Reply(input: input, fromState: fromState, toState: toState, output: output)
@@ -67,10 +46,9 @@ class Automaton<State> {
                 .filter { $0.output != nil }
                 // After switching to another `Observable` it unsubscribes from old,
                 // while `flatMap` would be still emitting.
-                .flatMapLatest { [unowned self] reply -> Observable<Reply<State>> in
+                .flatMapLatest { [unowned self] reply -> Observable<Reply<State, Input>> in
                     let output = reply.output!
-                    return self.recurReply(from: output)
-                            .startWith(reply)
+                    return self.recurReply(from: output).startWith(reply)
                 }
 
         // Emits replies without output.
@@ -79,6 +57,13 @@ class Automaton<State> {
 
         // `successObservable` and `failureObservable` both emit `Reply<State>`.
         return Observable.merge(successObservable, failureObservable)
+    }
+
+    deinit {
+        // Stops emission of replies.
+        self.replySubject.onCompleted()
+        self.disposable?.dispose()
+        self.disposable = nil
     }
 
     func send(input: Input) {
