@@ -60,15 +60,23 @@ class HomeViewController: UIViewController {
         return indicator
     }()
 
-    private lazy var playButton: UIButton = {
+    private lazy var actionButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage.playLarge?.asTemplate(), for: .normal)
         button.tintColor = .primary
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 0, height: .marginExtraSmall)
         button.layer.shadowRadius = .marginExtraSmall
         button.layer.shadowOpacity = 0.5
         return button
+    }()
+
+    private lazy var messageLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.primary.withAlphaComponent(0.5)
+        label.font = .body
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
     }()
 
     private let navigator: ApplicationNavigator
@@ -93,9 +101,10 @@ class HomeViewController: UIViewController {
         setupTitleLabel()
         setupSubtitleLabel()
         setupBottomComponentsContainer()
+        setupMessageLabel()
         setupConvexityImageView()
         setupIndicatorView()
-        setupPlayButton()
+        setupActionButton()
         bindToAutomaton()
         requestLesson()
     }
@@ -139,6 +148,16 @@ class HomeViewController: UIViewController {
                 multiplier: bottomComponentsContainerHeightMultiplier).isActive = true
     }
 
+    private func setupMessageLabel() {
+        bottomComponentsContainer.addSubview(messageLabel)
+        messageLabel.anchor(bottom: bottomComponentsContainer.bottomAnchor,
+                leading: bottomComponentsContainer.leadingAnchor,
+                trailing: bottomComponentsContainer.trailingAnchor,
+                bottomConstant: .marginLarge,
+                leadingConstant: .marginLarge,
+                trailingConstant: .marginLarge)
+    }
+
     private func setupConvexityImageView() {
         bottomComponentsContainer.addSubview(convexityImageView)
         convexityImageView.anchorCenterToSuperview()
@@ -147,22 +166,28 @@ class HomeViewController: UIViewController {
 
     private func setupIndicatorView() {
         bottomComponentsContainer.addSubview(indicatorView)
-        indicatorView.anchorCenterToSuperview()
+        indicatorView.anchorCenter(to: convexityImageView)
     }
 
-    private func setupPlayButton() {
-        bottomComponentsContainer.addSubview(playButton)
-        playButton.anchorCenterToSuperview()
-        playButton.size(with: playButtonSize)
-        playButton.rx.tap
-                .bind { [weak self] in
-                    if let lessonState = self?.automaton.state.value.homeState.lessonState,
-                       case .lesson(let lesson) = lessonState {
-                        self?.automaton.send(input: SetLessonInput(lesson: lesson))
-                        self?.navigator.toLesson()
-                    }
-                }
+    private func setupActionButton() {
+        bottomComponentsContainer.addSubview(actionButton)
+        actionButton.anchorCenter(to: convexityImageView)
+        actionButton.size(with: playButtonSize)
+        actionButton.rx.tap
+                .bind { [weak self] in self?.actionButtonTapped() }
                 .disposed(by: disposeBag)
+    }
+
+    private func actionButtonTapped() {
+        switch automaton.state.value.homeState.lessonState {
+        case .failed:
+            requestLesson()
+        case .lesson(let lesson):
+            automaton.send(input: SetLessonInput(lesson: lesson))
+            navigator.toLesson()
+        default:
+            return
+        }
     }
 
     private func bindToAutomaton() {
@@ -174,12 +199,23 @@ class HomeViewController: UIViewController {
     }
 
     private func stateChanged(to state: HomeState) {
-        configureIndicatorView(isAnimating: state.lessonState == .loading)
-
-        if case .lesson(_) = state.lessonState {
-            configurePlayButton(isHidden: false)
-        } else {
-            configurePlayButton(isHidden: true)
+        switch state.lessonState {
+        case .none:
+            configureIndicatorView(isAnimating: false)
+            configureActionButton(isHidden: true, image: nil)
+            configureMessageLabel(text: "")
+        case .loading:
+            configureIndicatorView(isAnimating: true)
+            configureActionButton(isHidden: true, image: nil)
+            configureMessageLabel(text: "message_loading".localized())
+        case .failed:
+            configureIndicatorView(isAnimating: false)
+            configureActionButton(isHidden: false, image: UIImage.refreshLarge)
+            configureMessageLabel(text: "message_failure".localized())
+        case .lesson(_):
+            configureIndicatorView(isAnimating: false)
+            configureActionButton(isHidden: false, image: UIImage.playLarge)
+            configureMessageLabel(text: "")
         }
     }
 
@@ -191,8 +227,13 @@ class HomeViewController: UIViewController {
         }
     }
 
-    private func configurePlayButton(isHidden: Bool) {
-        playButton.isHidden = isHidden
+    private func configureActionButton(isHidden: Bool, image: UIImage?) {
+        actionButton.isHidden = isHidden
+        actionButton.setImage(image?.asTemplate(), for: .normal)
+    }
+
+    private func configureMessageLabel(text: String) {
+        messageLabel.text = text
     }
 
     private func requestLesson() {

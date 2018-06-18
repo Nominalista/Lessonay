@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Lessonay
+//  Lessons
 //
 //  Created by Nominalista on 02.05.2018.
 //  Copyright © 2018 Nominalista. All rights reserved.

@@ -1,6 +1,6 @@
 /* 
   Localizable.strings
-  Lessonay
+  Lessons
 
   Created by Nominalista on 06.05.2018.
   Copyright © 2018 Nominalista. All rights reserved.
@@ -8,3 +8,5 @@
 
 "title" = "Watch lesson";
 "subtitle" = "Discover new video every day";
+"message_loading" = "Loading...";
+"message_failure" = "Failed to retrieve lesson. Try again.";

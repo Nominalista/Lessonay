@@ -33,6 +33,9 @@ struct HomeMapper {
 
     private func retrieveLesson() -> Observable<ApplicationInput> {
         return lessonService.retrieveLesson()
+                .subscribeOn(BackgroundScheduler.instance)
+                .observeOn(MainScheduler.instance)
                 .map { UpdateLessonStateInput(lessonState: .lesson($0)) }
+                .catchErrorJustReturn(UpdateLessonStateInput(lessonState: .failed))
     }
 }

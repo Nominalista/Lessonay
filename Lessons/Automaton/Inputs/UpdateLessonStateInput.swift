@@ -4,6 +4,5 @@
 //
 
 struct UpdateLessonStateInput: ApplicationInput {
-
     let lessonState: LessonState
 }

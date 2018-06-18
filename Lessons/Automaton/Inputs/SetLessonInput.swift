@@ -4,6 +4,5 @@
 //
 
 struct SetLessonInput: ApplicationInput {
-
     let lesson: Lesson?
 }

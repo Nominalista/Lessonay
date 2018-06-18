@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		15B6D99690663E1A95E16FEE /* Pods_Lessons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29FB1F47B5EF755E94BD6428 /* Pods_Lessons.framework */; };
 		9327302C61244A748B017A95 /* LessonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273AE1D62788B7CB04E0AF /* LessonService.swift */; };
+		932730D533DCA5BC9BA806B1 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273792DB76DB1ABB3E4BF2 /* Array.swift */; };
 		932730EAEA0AEB23DF0A612C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9327363DA85F4F788B0AD10F /* Assets.xcassets */; };
 		9327320691410D95086ECFDB /* ApplicationMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273679ED5C151AF1C69E9A /* ApplicationMapper.swift */; };
 		932732CC1A1BCC5EA609A3F6 /* SetIsPlayingInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273BAB31C5EAFCDBC90BBB /* SetIsPlayingInput.swift */; };
@@ -17,9 +18,11 @@
 		932733DE05E0CCE3478BB0A4 /* PlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273DD44FEC38E90D38699A /* PlaybackViewController.swift */; };
 		932734C0ED48685BB4A61DA5 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932735BC86849C2525CA673E /* CGFloat.swift */; };
 		932735A3E394E5AB007D153A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273D5506942AB01C9810A1 /* HomeViewController.swift */; };
+		932735DEA75C14DCD8D5C4C9 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273C3EC355F2DAC902EECC /* Utils.swift */; };
 		932736357978EEE5E3F85166 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273B5A21F9DAE24CC8A18B /* UIImage.swift */; };
 		9327374943A711621895D1D6 /* HomeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273E927E65ED9869B46401 /* HomeMapper.swift */; };
 		932737E09C2FFA4B3A91926A /* Automaton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273872867CEE699D23B3A2 /* Automaton.swift */; };
+		9327382C40E152CB3E7FBCD6 /* BackgroundScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932732839B097BF199797AA1 /* BackgroundScheduler.swift */; };
 		9327383E53B778EDB701F33B /* PlaybackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327300BF037B2F171825B78 /* PlaybackState.swift */; };
 		9327385878067CE666837CE4 /* SetLessonInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327339F93B42DFEE6EDAB7A /* SetLessonInput.swift */; };
 		932738CEE4B4DF441999B180 /* PlaybackMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273D5476C1A109505A04B2 /* PlaybackMapper.swift */; };
@@ -31,6 +34,7 @@
 		93273AE1C6100B2327815E34 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273F4358FA2A2CD57A243A /* UIColor.swift */; };
 		93273BB3739DE55CAE07A33A /* UpdateLessonStateInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273328C17868C1C8200A97 /* UpdateLessonStateInput.swift */; };
 		93273BCA771678FEADBAFB52 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932735B36DA8A34540EC49E8 /* Lesson.swift */; };
+		93273CE126C4D37F9A410A5B /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327381D022276723B2B13B1 /* ServiceError.swift */; };
 		93273D190EAB3E88E9DAB601 /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273F4B62798599CAB33963 /* Reply.swift */; };
 		93273D8E147C5F7FF16AE4B8 /* ApplicationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273D4CDB1C94EE020FFF02 /* ApplicationState.swift */; };
 		93273DAC14E0BF85DD90A70F /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273982C637EADA88F6314B /* URL.swift */; };
@@ -38,7 +42,6 @@
 		93273ED6CE00957EF3F37BF5 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327341A5558618D131DA64B /* VideoView.swift */; };
 		93273EE80FD4D4EAA3A626B9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273D72C3452C189982C133 /* String.swift */; };
 		93273EFF8E86AA75C682A481 /* ApplicationNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273AAECEF63524243C765F /* ApplicationNavigator.swift */; };
-		93273F707935BB45E3DDFA4B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273F4EDD25C07B0620FC28 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +50,7 @@
 		79D4BF82102EC67C2D6A11FB /* Pods-Lessons.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lessons.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lessons/Pods-Lessons.release.xcconfig"; sourceTree = "<group>"; };
 		9327300BF037B2F171825B78 /* PlaybackState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackState.swift; sourceTree = "<group>"; };
 		9327318EFCAE1A77D7B87EBC /* ApplicationInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInput.swift; sourceTree = "<group>"; };
+		932732839B097BF199797AA1 /* BackgroundScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundScheduler.swift; sourceTree = "<group>"; };
 		93273328C17868C1C8200A97 /* UpdateLessonStateInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateLessonStateInput.swift; sourceTree = "<group>"; };
 		9327339F93B42DFEE6EDAB7A /* SetLessonInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetLessonInput.swift; sourceTree = "<group>"; };
 		9327341A5558618D131DA64B /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
@@ -56,7 +60,9 @@
 		932735E4DFF871A2CBC3D5A4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9327363DA85F4F788B0AD10F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93273679ED5C151AF1C69E9A /* ApplicationMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationMapper.swift; sourceTree = "<group>"; };
+		93273792DB76DB1ABB3E4BF2 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		932737AF11C421B2DCA343B0 /* Lessons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lessons.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9327381D022276723B2B13B1 /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		93273872867CEE699D23B3A2 /* Automaton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Automaton.swift; sourceTree = "<group>"; };
 		932738EB7594409B550BA5FA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		93273982C637EADA88F6314B /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
@@ -67,6 +73,7 @@
 		93273B5557433C1C7898A095 /* HomeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeState.swift; sourceTree = "<group>"; };
 		93273B5A21F9DAE24CC8A18B /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		93273BAB31C5EAFCDBC90BBB /* SetIsPlayingInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetIsPlayingInput.swift; sourceTree = "<group>"; };
+		93273C3EC355F2DAC902EECC /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		93273D0AEB67676FC3762535 /* ApplicationAutomaton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationAutomaton.swift; sourceTree = "<group>"; };
 		93273D4CDB1C94EE020FFF02 /* ApplicationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationState.swift; sourceTree = "<group>"; };
 		93273D5476C1A109505A04B2 /* PlaybackMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackMapper.swift; sourceTree = "<group>"; };
@@ -77,7 +84,6 @@
 		93273E927E65ED9869B46401 /* HomeMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMapper.swift; sourceTree = "<group>"; };
 		93273F4358FA2A2CD57A243A /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		93273F4B62798599CAB33963 /* Reply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
-		93273F4EDD25C07B0620FC28 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +197,8 @@
 			children = (
 				93273FA3451035E8BBDD1227 /* Extensions */,
 				9327378C93EDB0E375E453F3 /* Automaton */,
+				93273C3EC355F2DAC902EECC /* Utils.swift */,
+				932737CE69BC4CC210891734 /* Rx */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -231,9 +239,16 @@
 			children = (
 				93273872867CEE699D23B3A2 /* Automaton.swift */,
 				93273F4B62798599CAB33963 /* Reply.swift */,
-				93273F4EDD25C07B0620FC28 /* Utils.swift */,
 			);
 			path = Automaton;
+			sourceTree = "<group>";
+		};
+		932737CE69BC4CC210891734 /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				932732839B097BF199797AA1 /* BackgroundScheduler.swift */,
+			);
+			path = Rx;
 			sourceTree = "<group>";
 		};
 		932738550FEC5F3F0023466C = {
@@ -250,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				93273D72C3452C189982C133 /* String.swift */,
+				93273792DB76DB1ABB3E4BF2 /* Array.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -266,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				93273AE1D62788B7CB04E0AF /* LessonService.swift */,
+				9327381D022276723B2B13B1 /* ServiceError.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -329,7 +346,7 @@
 			dependencies = (
 			);
 			name = Lessons;
-			productName = Lessonay;
+			productName = Lessons;
 			productReference = 932737AF11C421B2DCA343B0 /* Lessons.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -465,10 +482,13 @@
 				93273AD7CE2295C66FA198BB /* ObservableType.swift in Sources */,
 				932737E09C2FFA4B3A91926A /* Automaton.swift in Sources */,
 				93273D190EAB3E88E9DAB601 /* Reply.swift in Sources */,
-				93273F707935BB45E3DDFA4B /* Utils.swift in Sources */,
 				93273BCA771678FEADBAFB52 /* Lesson.swift in Sources */,
 				9327302C61244A748B017A95 /* LessonService.swift in Sources */,
 				93273AA6410BB309682556C6 /* AppDelegate.swift in Sources */,
+				93273CE126C4D37F9A410A5B /* ServiceError.swift in Sources */,
+				932730D533DCA5BC9BA806B1 /* Array.swift in Sources */,
+				932735DEA75C14DCD8D5C4C9 /* Utils.swift in Sources */,
+				9327382C40E152CB3E7FBCD6 /* BackgroundScheduler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,6 +4,5 @@
 //
 
 struct SetIsPlayingInput: ApplicationInput {
-
     let isPlaying: Bool
 }

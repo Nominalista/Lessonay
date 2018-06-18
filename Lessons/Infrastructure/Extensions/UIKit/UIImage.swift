@@ -21,6 +21,10 @@ extension UIImage {
         return UIImage(named: "ic_play_48pt")
     }
 
+    class var refreshLarge: UIImage? {
+        return UIImage(named: "ic_refresh_48pt")
+    }
+
     class var volumeOffBig: UIImage? {
         return UIImage(named: "ic_volume_off_36pt")
     }
