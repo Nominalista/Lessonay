@@ -44,9 +44,7 @@ class Automaton<State, Input> {
         // Recurs successfully mapped replies.
         let successObservable = replyObservable
                 .filter { $0.output != nil }
-                // After switching to another `Observable` it unsubscribes from old,
-                // while `flatMap` would be still emitting.
-                .flatMapLatest { [unowned self] reply -> Observable<Reply<State, Input>> in
+                .flatMap { [unowned self] reply -> Observable<Reply<State, Input>> in
                     let output = reply.output!
                     return self.recurReply(from: output).startWith(reply)
                 }

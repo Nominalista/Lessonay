@@ -11,6 +11,4 @@ struct Reply<State, Input> {
     var fromState: State
     var toState: State
     var output: Observable<Input>?
-
-    var isSuccessful: Bool { return output != nil }
 }
