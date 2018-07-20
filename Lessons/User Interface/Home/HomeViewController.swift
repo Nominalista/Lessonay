@@ -237,6 +237,6 @@ class HomeViewController: UIViewController {
     }
 
     private func requestLesson() {
-        automaton.send(input: UpdateLessonStateInput(lessonState: .loading))
+        automaton.send(input: SetLessonStateInput(lessonState: .loading))
     }
 }

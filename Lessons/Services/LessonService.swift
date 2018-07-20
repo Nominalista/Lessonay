@@ -12,7 +12,7 @@ private let queryItem = URLQueryItem(name: "q", value: "lesson")
 
 class LessonService {
 
-    func retrieveLesson() -> Observable<Lesson> {
+    func loadLesson() -> Observable<Lesson> {
         return Observable.create { observer in
             var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: false)
             components?.queryItems = [keyItem, queryItem]

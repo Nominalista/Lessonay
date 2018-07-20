@@ -3,6 +3,9 @@
 // Copyright (c) 2018 Nominalista. All rights reserved.
 //
 
-struct UpdateLessonStateInput: ApplicationInput {
+protocol HomeInput: ApplicationInput {
+}
+
+struct SetLessonStateInput: HomeInput {
     let lessonState: LessonState
 }

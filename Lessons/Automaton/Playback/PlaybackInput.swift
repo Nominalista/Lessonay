@@ -3,10 +3,12 @@
 // Copyright (c) 2018 Nominalista. All rights reserved.
 //
 
-struct SetIsPlayingInput: ApplicationInput {
+protocol PlaybackInput: ApplicationInput {}
+
+struct SetIsPlayingInput: PlaybackInput {
     let isPlaying: Bool
 }
 
-struct SetLessonInput: ApplicationInput {
+struct SetLessonInput: PlaybackInput {
     let lesson: Lesson?
 }

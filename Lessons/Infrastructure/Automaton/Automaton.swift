@@ -68,8 +68,3 @@ class Automaton<State, Input> {
         inputSubject.onNext(input)
     }
 }
-
-func maybeCombine<Input>(outputs: Observable<Input>? ...) -> Observable<Input>? {
-    let filteredOutputs = outputs.filter { $0 != nil }.map { $0! }
-    return filteredOutputs.isEmpty ? nil : Observable.merge(filteredOutputs)
-}

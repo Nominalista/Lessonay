@@ -15,7 +15,7 @@
 		932732E3FB52ABF7EEBFAA94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93273A8EFB2ADCD3B94A1473 /* LaunchScreen.storyboard */; };
 		932733DE05E0CCE3478BB0A4 /* PlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273DD44FEC38E90D38699A /* PlaybackViewController.swift */; };
 		93273489432F4AD832DEA30F /* PlaybackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932736F7571024951A41749C /* PlaybackState.swift */; };
-		93273496C5B5C35E4C9F60EF /* HomeInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273CCF7B70D215475F56FE /* HomeInputs.swift */; };
+		93273496C5B5C35E4C9F60EF /* HomeInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273CCF7B70D215475F56FE /* HomeInput.swift */; };
 		932734C0ED48685BB4A61DA5 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932735BC86849C2525CA673E /* CGFloat.swift */; };
 		932735A3E394E5AB007D153A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273D5506942AB01C9810A1 /* HomeViewController.swift */; };
 		932735DEA75C14DCD8D5C4C9 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273C3EC355F2DAC902EECC /* Utils.swift */; };
@@ -36,7 +36,7 @@
 		93273C7D3352896114176377 /* ApplicationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273D281D83E69293261755 /* ApplicationState.swift */; };
 		93273CE126C4D37F9A410A5B /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327381D022276723B2B13B1 /* ServiceError.swift */; };
 		93273D190EAB3E88E9DAB601 /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273F4B62798599CAB33963 /* Reply.swift */; };
-		93273D66A06A547694942991 /* PlaybackInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932739057E9BBD11D2968E87 /* PlaybackInputs.swift */; };
+		93273D66A06A547694942991 /* PlaybackInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932739057E9BBD11D2968E87 /* PlaybackInput.swift */; };
 		93273DAC14E0BF85DD90A70F /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93273982C637EADA88F6314B /* URL.swift */; };
 		93273DFDEA13FF30F88DB275 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932734A3CBCD04D6E7852342 /* UIFont.swift */; };
 		93273ED6CE00957EF3F37BF5 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327341A5558618D131DA64B /* VideoView.swift */; };
@@ -63,7 +63,7 @@
 		9327385C6947508CEF60B47F /* ApplicationInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInput.swift; sourceTree = "<group>"; };
 		93273872867CEE699D23B3A2 /* Automaton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Automaton.swift; sourceTree = "<group>"; };
 		932738EB7594409B550BA5FA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
-		932739057E9BBD11D2968E87 /* PlaybackInputs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackInputs.swift; sourceTree = "<group>"; };
+		932739057E9BBD11D2968E87 /* PlaybackInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackInput.swift; sourceTree = "<group>"; };
 		93273982C637EADA88F6314B /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		932739BFF41F07B4BAF2CE6C /* PlaybackMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackMapper.swift; sourceTree = "<group>"; };
 		93273A70FFC6D4A8ABDBBC5B /* ObservableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableType.swift; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 		93273B5A21F9DAE24CC8A18B /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		93273B7D01F284B8D7A8C642 /* ApplicationMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationMapper.swift; sourceTree = "<group>"; };
 		93273C3EC355F2DAC902EECC /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		93273CCF7B70D215475F56FE /* HomeInputs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeInputs.swift; sourceTree = "<group>"; };
+		93273CCF7B70D215475F56FE /* HomeInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeInput.swift; sourceTree = "<group>"; };
 		93273D0AEB67676FC3762535 /* ApplicationAutomaton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationAutomaton.swift; sourceTree = "<group>"; };
 		93273D281D83E69293261755 /* ApplicationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationState.swift; sourceTree = "<group>"; };
 		93273D5506942AB01C9810A1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 			children = (
 				932736F7571024951A41749C /* PlaybackState.swift */,
 				932739BFF41F07B4BAF2CE6C /* PlaybackMapper.swift */,
-				932739057E9BBD11D2968E87 /* PlaybackInputs.swift */,
+				932739057E9BBD11D2968E87 /* PlaybackInput.swift */,
 			);
 			path = Playback;
 			sourceTree = "<group>";
@@ -195,7 +195,7 @@
 		932735DAB193C610D737D225 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				93273CCF7B70D215475F56FE /* HomeInputs.swift */,
+				93273CCF7B70D215475F56FE /* HomeInput.swift */,
 				93273424C52B2455F1139483 /* HomeState.swift */,
 				93273AF37605BD9F1063C93E /* HomeMapper.swift */,
 			);
@@ -460,7 +460,7 @@
 				932735DEA75C14DCD8D5C4C9 /* Utils.swift in Sources */,
 				9327382C40E152CB3E7FBCD6 /* BackgroundScheduler.swift in Sources */,
 				932736B886BACC2ADB09DEF0 /* ApplicationNavigator.swift in Sources */,
-				93273496C5B5C35E4C9F60EF /* HomeInputs.swift in Sources */,
+				93273496C5B5C35E4C9F60EF /* HomeInput.swift in Sources */,
 				932738D7B60BA8C5DDC909AB /* ApplicationInput.swift in Sources */,
 				9327311717242F242BDB2DCC /* HomeState.swift in Sources */,
 				93273C7D3352896114176377 /* ApplicationState.swift in Sources */,
@@ -468,7 +468,7 @@
 				93273489432F4AD832DEA30F /* PlaybackState.swift in Sources */,
 				9327371644AE56C8049EDA37 /* PlaybackMapper.swift in Sources */,
 				93273A2481A842EAEC9D65E7 /* ApplicationMapper.swift in Sources */,
-				93273D66A06A547694942991 /* PlaybackInputs.swift in Sources */,
+				93273D66A06A547694942991 /* PlaybackInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

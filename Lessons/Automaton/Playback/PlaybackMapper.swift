@@ -7,24 +7,24 @@ import RxSwift
 
 struct PlaybackMapper {
 
-    func map(state: PlaybackState, input: ApplicationInput) -> (PlaybackState, Observable<ApplicationInput>?) {
+    typealias PlaybackMapperResult = (PlaybackState, Observable<ApplicationInput>?)
+
+    func map(state: PlaybackState, input: PlaybackInput) -> PlaybackMapperResult {
         switch input {
         case let input as SetIsPlayingInput:
-            return map(state: state, input: input)
+            return setIsPlaying(state: state, input: input)
         case let input as SetLessonInput:
-            return map(state: state, input: input)
+            return setLesson(state: state, input: input)
         default:
             return (state, nil)
         }
     }
 
-    private func map(state: PlaybackState, input: SetIsPlayingInput) -> (PlaybackState, Observable<ApplicationInput>?) {
-        let newState = PlaybackState(isPlaying: input.isPlaying, lesson: state.lesson)
-        return (newState, .empty())
+    private func setIsPlaying(state: PlaybackState, input: SetIsPlayingInput) -> PlaybackMapperResult {
+        return (PlaybackState(isPlaying: input.isPlaying, lesson: state.lesson), .empty())
     }
 
-    private func map(state: PlaybackState, input: SetLessonInput) -> (PlaybackState, Observable<ApplicationInput>?) {
-        let newState = PlaybackState(isPlaying: state.isPlaying, lesson: input.lesson)
-        return (newState, .empty())
+    private func setLesson(state: PlaybackState, input: SetLessonInput) -> PlaybackMapperResult {
+        return (PlaybackState(isPlaying: state.isPlaying, lesson: input.lesson), .empty())
     }
 }

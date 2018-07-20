@@ -7,35 +7,30 @@ import RxSwift
 
 struct HomeMapper {
 
+    typealias HomeMapperResult = (HomeState, Observable<ApplicationInput>?)
+
     private let lessonService = LessonService()
 
-    func map(state: HomeState, input: ApplicationInput) -> (HomeState, Observable<ApplicationInput>?) {
+    func map(state: HomeState, input: HomeInput) -> HomeMapperResult {
         switch input {
-        case let input as UpdateLessonStateInput:
-            return map(state: state, input: input)
+        case let input as SetLessonStateInput:
+            return setLessonState(state: state, input: input)
         default:
             return (state, nil)
         }
     }
 
-    private func map(state: HomeState, input: UpdateLessonStateInput) -> (HomeState, Observable<ApplicationInput>?) {
-        var output: Observable<ApplicationInput>?
-
-        switch input.lessonState {
-        case .loading:
-            output = retrieveLesson()
-        case .none, .failed, .lesson:
-            output = .empty()
-        }
-
-        return (HomeState(lessonState: input.lessonState), output)
+    private func setLessonState(state: HomeState, input: SetLessonStateInput) -> HomeMapperResult {
+        let output = input.lessonState == .loading ? loadLesson() : Observable.empty()
+        let newState = HomeState(lessonState: input.lessonState)
+        return (newState, output)
     }
 
-    private func retrieveLesson() -> Observable<ApplicationInput> {
-        return lessonService.retrieveLesson()
+    private func loadLesson() -> Observable<ApplicationInput> {
+        return lessonService.loadLesson()
                 .subscribeOn(BackgroundScheduler.instance)
                 .observeOn(MainScheduler.instance)
-                .map { UpdateLessonStateInput(lessonState: .lesson($0)) }
-                .catchErrorJustReturn(UpdateLessonStateInput(lessonState: .failed))
+                .map { SetLessonStateInput(lessonState: .lesson($0)) }
+                .catchErrorJustReturn(SetLessonStateInput(lessonState: .failed))
     }
 }
